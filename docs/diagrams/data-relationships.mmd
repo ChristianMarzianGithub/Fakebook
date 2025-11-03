@@ -1,0 +1,12 @@
+%% Mermaid ER diagram for domain relationships
+erDiagram
+    USER ||--o{ POST : creates
+    USER ||--o{ COMMENT : writes
+    USER ||--o{ POST_LIKE : likes
+    USER ||--o{ FOLLOW : follows
+    POST ||--o{ COMMENT : contains
+    POST ||--o{ POST_LIKE : receives
+    FOLLOW }o--|| USER : follower
+    FOLLOW }o--|| USER : followee
+    COMMENT }o--|| POST : on
+    POST_LIKE }o--|| POST : targets
