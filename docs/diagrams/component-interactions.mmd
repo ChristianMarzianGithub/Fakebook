@@ -1,0 +1,21 @@
+%% Mermaid flowchart describing layered component interactions
+flowchart LR
+    Client["Client / API Gateway"]
+    Security["Security Filter Chain"]
+    Controller["REST Controllers"]
+    Service["Service Layer"]
+    Mapper["MapStruct Mappers"]
+    Repository["Repository Layer"]
+    Database[("PostgreSQL")] 
+
+    Client -->|HTTP request| Security
+    Security -->|Authenticated principal| Controller
+    Controller -->|Delegates| Service
+    Service -->|Maps DTOs| Mapper
+    Mapper -->|Domain models| Service
+    Service -->|Persistence commands| Repository
+    Repository -->|SQL operations| Database
+    Database -->|Entities| Repository
+    Repository -->|Domain objects| Service
+    Service -->|Responses| Controller
+    Controller -->|HTTP response| Client

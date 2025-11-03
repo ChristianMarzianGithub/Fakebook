@@ -115,6 +115,10 @@ Key properties (overridable via environment variables):
 - `jwt.secret` – **Base64-encoded** signing key
 - `jwt.expiration` – Token lifetime in milliseconds
 
+## Architecture
+
+The backend follows a layered Spring Boot design with controllers delegating to services, repositories, and MapStruct mappers while JWT security guards every request. Detailed descriptions of the layers, domain entities, request flow, and Mermaid diagram sources are available in [`docs/architecture.md`](docs/architecture.md).
+
 ## License
 
 MIT

@@ -1,0 +1,28 @@
+%% Mermaid sequence diagram showing authentication
+sequenceDiagram
+    participant C as Client
+    participant A as AuthController
+    participant S as AuthService
+    participant R as UserRepository
+    participant P as PasswordEncoder
+    participant J as JwtProvider
+    participant F as JwtAuthenticationFilter
+
+    C->>A: POST /api/auth/login (credentials)
+    A->>S: authenticate(credentials)
+    S->>R: findByUsernameOrEmail()
+    R-->>S: User
+    S->>P: matches(raw, hashed)
+    P-->>S: boolean
+    S->>J: generateToken(user)
+    J-->>S: JWT
+    S-->>A: AuthResponse(JWT)
+    A-->>C: 200 OK + JWT
+
+    C->>F: Subsequent request with Authorization header
+    F->>J: validateToken(JWT)
+    J-->>F: Claims
+    F->>R: loadUserById()
+    R-->>F: UserDetails
+    F->>Controller: setAuthentication()
+    Controller-->>C: Protected resource
