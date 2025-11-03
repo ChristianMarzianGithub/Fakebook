@@ -59,6 +59,8 @@ The API will be available at `http://localhost:8080`.
 mvn test
 ```
 
+The automated suite now includes `FollowServiceTest`, which validates self-follow prevention, duplicate follow handling, follow persistence, and follower/following lookups.
+
 ## Example API Usage
 
 ### Register
