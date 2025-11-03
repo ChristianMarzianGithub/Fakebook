@@ -59,6 +59,8 @@ The API will be available at `http://localhost:8080`.
 mvn test
 ```
 
+The suite now includes dedicated `UserServiceTest` coverage to ensure profile retrieval, profile updates, and follower/following lookups interact with repositories and mappers as expected.
+
 ## Example API Usage
 
 ### Register
