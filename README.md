@@ -59,7 +59,7 @@ The API will be available at `http://localhost:8080`.
 mvn test
 ```
 
-Unit tests now cover the JWT service, including token generation, claim extraction, validation edge cases, and tampering scenarios to ensure authentication reliability.
+The automated suite now includes `FollowServiceTest`, which validates self-follow prevention, duplicate follow handling, follow persistence, and follower/following lookups.
 
 ## Example API Usage
 
