@@ -59,6 +59,8 @@ The API will be available at `http://localhost:8080`.
 mvn test
 ```
 
+Unit tests now cover the JWT service, including token generation, claim extraction, validation edge cases, and tampering scenarios to ensure authentication reliability.
+
 ## Example API Usage
 
 ### Register
