@@ -1,0 +1,25 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: fakebook
+      POSTGRES_USER: fakebook
+      POSTGRES_PASSWORD: fakebook
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  app:
+    build: .
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/fakebook
+      SPRING_DATASOURCE_USERNAME: fakebook
+      SPRING_DATASOURCE_PASSWORD: fakebook
+      JWT_SECRET: ${JWT_SECRET:-c2VjdXJlLXNlY3JldC1jaGFuZ2UtbWU=} # base64
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+volumes:
+  db_data:

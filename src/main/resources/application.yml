@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/fakebook
+    username: fakebook
+    password: fakebook
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+jwt:
+  secret: c2VjdXJlLXNlY3JldC1jaGFuZ2UtbWU=
+  expiration: 3600000 # 1 hour in milliseconds
+
+logging:
+  level:
+    org.springframework.security: INFO
+
+server:
+  port: 8080
